@@ -1,0 +1,40 @@
+{
+    "name": "s50lution/automatically-cleanup-guest",
+    "description": "Automatically clean up guest accounts.",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "^6.4 || ^6.5"
+    },
+    "authors": [
+        {
+            "name": "50lution",
+            "homepage": "https://50lution.com/"
+        }
+    ],
+    "extra": {
+        "shopware-plugin-class": "S50lution\\AutomaticallyCleanUpGuest\\S50lutionAutomaticallyCleanupGuest",
+        "label": {
+            "de-DE": "Plugin zur automatischen Bereinigung von Gastbenutzern",
+            "en-GB": "Automatically clean up guest accounts plugin"
+        },
+        "description": {
+            "de-DE": "Dieses Plugin unterstützt das automatische Löschen von Kundenkonten, die nicht mehr in Gebrauch sind, um zu viele doppelte E-Mails im Shop zu begrenzen.",
+            "en-GB": "This plugin supports automatically deleting client accounts that are no longer in use to limit too many duplicate emails in the shop. Developed by inspiration from Shopware forum."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://store.shopware.com/en/50lution.html",
+            "en-GB": "https://store.shopware.com/en/50lution.html"
+        },
+        "supportLink": {
+            "de-DE": "https://50lution.com",
+            "en-GB": "https://50lution.com"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "S50lution\\AutomaticallyCleanUpGuest\\": "src/"
+        }
+    }
+}

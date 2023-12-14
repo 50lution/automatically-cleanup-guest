@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="S50lution\AutomaticallyCleanUpGuest\Command\CleanUpGuestCommand">
+            <argument type="service" id="S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService"/>
+
+            <tag name="console.command"/>
+        </service>
+
+        <service id="S50lution\AutomaticallyCleanUpGuest\ScheduledTask\AutomaticallyCleanUpGuestTask">
+            <tag name="shopware.scheduled.task"/>
+        </service>
+
+        <service id="S50lution\AutomaticallyCleanUpGuest\ScheduledTask\AutomaticallyCleanUpGuestHandler">
+            <argument type="service" id="scheduled_task.repository"/>
+            <argument type="service" id="S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService"/>
+
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service id="S50lution\AutomaticallyCleanUpGuest\Message\CleanUpGuestsHandler">
+            <argument type="service" id="customer.repository"/>
+
+            <tag name="messenger.message_handler" />
+        </service>
+
+        <service id="S50lution\AutomaticallyCleanUpGuest\Subscriber\CustomerLogoutSubscriber">
+            <argument type="service" id="S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService">
+            <argument type="service" id="customer.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="messenger.bus.shopware"/>
+        </service>
+    </services>
+</container>
