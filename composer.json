@@ -20,7 +20,7 @@
             "en-GB": "Automatically clean up guest accounts plugin"
         },
         "description": {
-            "de-DE": "Dieses Plugin unterstützt das automatische Löschen von Kundenkonten, die nicht mehr in Gebrauch sind, um zu viele doppelte E-Mails im Shop zu begrenzen.",
+            "de-DE": "Dieses Plugin unterstützt das automatische Löschen von Gastkonten, die nicht mehr verwendet werden, um zu viele doppelte E-Mails im Shop zu begrenzen.",
             "en-GB": "This plugin supports automatically deleting client accounts that are no longer in use to limit too many duplicate emails in the shop. Developed by inspiration from Shopware forum."
         },
         "manufacturerLink": {

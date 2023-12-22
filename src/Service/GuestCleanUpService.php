@@ -18,7 +18,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 class GuestCleanUpService
 {
-    final public const DELETE_CUSTOMERS_BATCH_SIZE = 100;
+    public const DELETE_CUSTOMERS_BATCH_SIZE = 100;
 
     private ?ShopwareStyle $io;
 
