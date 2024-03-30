@@ -6,11 +6,16 @@ use S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService;
 use Shopware\Core\Content\Media\MediaException;
 use Shopware\Core\Framework\Adapter\Console\ShopwareStyle;
 use Shopware\Core\Framework\Context;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 's50lution:clean-up-guest',
+    description: 'Automatically remove guest customers',
+)]
 class CleanUpGuestCommand extends Command
 {
     private ShopwareStyle $io;
@@ -26,12 +31,8 @@ class CleanUpGuestCommand extends Command
         $this->guestCleanUpService = $guestCleanUpService;
     }
 
-    protected static $defaultName = 's50lution:clean-up-guest';
-
     protected function configure(): void
     {
-        $this->setDescription('Automatically remove guest customers');
-
         $this->addOption('batch-size', 'b', InputOption::VALUE_REQUIRED, 'Number of entities per iteration', '100')
             ->addOption(
                 'async',

@@ -6,7 +6,9 @@ use S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\MessageQueue\ScheduledTask\ScheduledTaskHandler;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
+#[AsMessageHandler(handles: AutomaticallyCleanUpGuestTask::class)]
 class AutomaticallyCleanUpGuestHandler extends ScheduledTaskHandler
 {
     private GuestCleanUpService $guestCleanUpService;
@@ -16,11 +18,6 @@ class AutomaticallyCleanUpGuestHandler extends ScheduledTaskHandler
         parent::__construct($scheduledTaskRepository);
 
         $this->guestCleanUpService = $guestCleanUpService;
-    }
-
-    public static function getHandledMessages(): iterable
-    {
-        return [AutomaticallyCleanUpGuestTask::class];
     }
 
     public function run(): void
