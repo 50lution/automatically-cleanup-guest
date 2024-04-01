@@ -2,10 +2,10 @@
     "name": "s50lution/automatically-cleanup-guest",
     "description": "Automatically clean up guest accounts.",
     "type": "shopware-platform-plugin",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "license": "MIT",
     "require": {
-        "shopware/core": "^6.4 || ^6.5"
+        "shopware/core": "^6.5 || ^6.6"
     },
     "authors": [
         {
