@@ -17,6 +17,7 @@
 
         <service id="S50lution\AutomaticallyCleanUpGuest\ScheduledTask\AutomaticallyCleanUpGuestHandler">
             <argument type="service" id="scheduled_task.repository"/>
+            <argument type="service" id="logger"/>
             <argument type="service" id="S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService"/>
 
             <tag name="messenger.message_handler"/>
@@ -37,7 +38,7 @@
         <service id="S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService">
             <argument type="service" id="customer.repository"/>
             <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
-            <argument type="service" id="messenger.bus.shopware"/>
+            <argument type="service" id="messenger.bus.default"/>
         </service>
     </services>
 </container>

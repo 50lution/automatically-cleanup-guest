@@ -2,6 +2,7 @@
 
 namespace S50lution\AutomaticallyCleanUpGuest\ScheduledTask;
 
+use Psr\Log\LoggerInterface;
 use S50lution\AutomaticallyCleanUpGuest\Service\GuestCleanUpService;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
@@ -11,13 +12,14 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 #[AsMessageHandler(handles: AutomaticallyCleanUpGuestTask::class)]
 class AutomaticallyCleanUpGuestHandler extends ScheduledTaskHandler
 {
-    private GuestCleanUpService $guestCleanUpService;
 
-    public function __construct(EntityRepository $scheduledTaskRepository, GuestCleanUpService $guestCleanUpService)
+    public function __construct(
+        EntityRepository $scheduledTaskRepository,
+        LoggerInterface $logger,
+        private readonly GuestCleanUpService $guestCleanUpService
+    )
     {
-        parent::__construct($scheduledTaskRepository);
-
-        $this->guestCleanUpService = $guestCleanUpService;
+        parent::__construct($scheduledTaskRepository, $logger);
     }
 
     public function run(): void
